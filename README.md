@@ -67,6 +67,9 @@ In order to generate the report, the reporter must be registered in the Jest con
 }
 ```
 
+This will create a report as a folder under your current root named `jest-screenshot-report/`. To view the report simple start the server: `node jest-screenshot/server.js` and navigate to `http://localhost:5000/`. 
+BE WARNED: Do not use that server in anything production related or with public access! The server isn't secure and writes files. An alternative is to open `jest-screenshot-report/index.html`, however updating the snapshots won't work.
+
 ### Configuring
 
 By placing a file **jest-screenshot.json** in the root directory of your project with a [configuration object](https://prior99.github.io/jest-screenshot/docs/interfaces/jestscreenshotconfiguration.html)

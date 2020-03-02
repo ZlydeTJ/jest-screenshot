@@ -17,7 +17,7 @@ export class Snapshot extends React.Component<SnapshotProps> {
     private get snapshot() { return this.props.snapshot; }
 
     public render() {
-        const { receivedPath, snapshotPath, diffPath, width, height } = this.snapshot;
+        const { receivedPath, snapshotPath, diffPath, width, height, testFileName } = this.snapshot;
         return (
             <article>
                 <nav className={cx("level")}>
@@ -31,6 +31,18 @@ export class Snapshot extends React.Component<SnapshotProps> {
                             {this.snapshot.message}
                         </Ansi>
                     </div>
+                </div>
+                <div className={cx("level")}>
+                  <button type="button" className={cx("button", "is-warning")} onClick={function overwriteSnapshot() {
+                    if (!confirm("Do you really want to overwrite the current snapshot and update the test definition?")) {
+                      return;
+                    }
+                    // TODO: change URL
+                    // TODO: await result and change UI (permanently)
+                    fetch(`http://localhost:5000/snapshotOverwrite?receivedPath=${encodeURIComponent(receivedPath)}&testFileName=${encodeURIComponent(testFileName)}`);
+                  }}>
+                    Update Snapshot
+                  </button>
                 </div>
                 <ImageDiffViewer
                     received={receivedPath}
