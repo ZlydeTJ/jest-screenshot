@@ -53201,13 +53201,13 @@ class Snapshot extends React.Component {
                     React.createElement(ansi_to_react_1.default, null, this.snapshot.message))),
             React.createElement("div", { className: cx("level") },
                 React.createElement("button", { type: "button", className: cx("button", "is-warning"), onClick: function overwriteSnapshot() {
-                        if (!confirm("Do you really want to overwrite the current snapshot and update test definition?")) {
+                        if (!confirm("Do you really want to overwrite the current snapshot and update the test definition?")) {
                             return;
                         }
-                        // tslint:disable-next-line:no-console
-                        console.log({ receivedPath, testFileName });
+                        // TODO: change URL
+                        // TODO: await result and change UI (permanently)
                         fetch(`http://localhost:5000/snapshotOverwrite?receivedPath=${encodeURIComponent(receivedPath)}&testFileName=${encodeURIComponent(testFileName)}`);
-                    } }, "Overwrite Snapshot")),
+                    } }, "Update Snapshot")),
             React.createElement(image_diff_viewer_1.ImageDiffViewer, { received: receivedPath, snapshot: snapshotPath, diff: diffPath, width: width, height: height })));
     }
 }
